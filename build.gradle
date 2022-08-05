@@ -1,0 +1,41 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+
+}
+
+dependencies {
+    implementation 'org.codehaus.groovy:groovy-all:3.0.5'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    //testng version 7.6 is not compatible with JDK 8 , it require JDK 11
+    testImplementation group: 'org.testng', name: 'testng', version: '7.5'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+task testing(type:Test){
+    useTestNG(){
+        suites 'src/test/resources/test.xml'
+    }
+    reports.html.destination=file("$buildDir/reports/testng")
+}
+task testing_factory(type:Test){
+    useTestNG(){
+        suites 'src/test/resources/factory.xml'
+    }
+    reports.html.destination=file("$buildDir/reports/testng")
+}

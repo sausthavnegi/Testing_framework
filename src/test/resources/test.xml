@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test" verbose="1" parallel="classes" thread-count="12">
+    <test name="tesing the test1">
+        <parameter name="inject" value="true"></parameter>
+        <classes>
+            <class name="Test1"/>
+          <!--  <class name="Test2"/>-->
+            <!--<class name="Test2"/>-->
+        </classes>
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
